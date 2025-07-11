@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom, #1e0c35, #120622);
+}
+
+.hero-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  height: 100vh;
+  color: white;
+  background: none;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  padding: 20px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 45px;
+  color: #ffffffcc;
+  text-shadow: 0 0 20px #1e0c35;
+  margin-bottom: 30px;
+}
+
+.main-heading {
+  font-size: 84px;
+  line-height: 1.2;
+  color: white;
+  text-shadow: 0 0 20px #fff;
+}
+
+.subheading {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #ff5cf3;
+  font-weight: bold;
+  text-shadow: 0 0 8px #ff5cf3;
+}
+
+.connect-btn {
+  margin-top: 40px;
+  padding: 15px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(to right, #7b2ff7, #f107a3);
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 0 20px #f107a3aa;
+  transition: transform 0.2s;
+}
+
+.connect-btn:hover {
+  transform: scale(1.05);
+}
+
+.right-section {
+  position: relative;
+  width: 80vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* base styling for all shapes */
+.shape img {
+  width: 400px;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+  z-index: 1;
+  position: relative;
+}
+
+.shape {
+  position: absolute;
+}
+
+.shape:hover{
+  transform: scale(1.05);
+}
+
+/* specific triangle layout */
+.shape-top-right {
+  top: 1%;
+  right: 10%;
+}
+
+.shape-mid-left {
+  top: 30%;
+  left: 15%;
+}
+
+.shape-bottom-right {
+  bottom: 5%;
+  right: 30%;
+}
+
