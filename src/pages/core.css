@@ -1,0 +1,89 @@
+.core-container {
+  background: #0e0c1f;
+  color: #fff;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.core-inner {
+  width: 100%;
+  max-width: 600px;
+}
+
+.core-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #c084fc;
+  letter-spacing: 1px;
+}
+
+.date-streak {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+textarea {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+  border: none;
+  resize: vertical;
+  background: #1e1b3a;
+  color: #fff;
+  font-size: 1rem;
+  transition: border 0.2s ease;
+}
+
+textarea:focus {
+  outline: none;
+  border: 2px solid #c084fc;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #c084fc, #9333ea);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: scale(1.05);
+}
+
+.analysis-box {
+  background: #1e1b3a;
+  padding: 1rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  box-shadow: 0 0 10px rgba(192, 132, 252, 0.2);
+}
+
+.conversion-bar {
+  background: #2a2a48;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.conversion-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c084fc, #9333ea);
+  transition: width 0.5s ease-in-out;
+}
