@@ -87,3 +87,22 @@ textarea:focus {
   background: linear-gradient(90deg, #c084fc, #9333ea);
   transition: width 0.5s ease-in-out;
 }
+
+.slider-section {
+  background: #1a1933;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.slider-section label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  color: #ddd;
+}
+
+.slider-section input[type="range"] {
+  width: 100%;
+  accent-color: #c084fc;
+}

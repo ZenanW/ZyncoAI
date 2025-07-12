@@ -9,6 +9,9 @@ type Analysis = {
 function Core() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
+  const [energy, setEnergy] = useState(5);
+  const [focus, setFocus] = useState(5);
+  const [mood, setMood] = useState(5);
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
 
   const handleSubmit = () => {
@@ -30,6 +33,9 @@ function Core() {
       summary = `Nice! You consumed and reflected. Keep the loop going. 🔄`;
     }
 
+    // Extra: contextualise summary
+    summary += ` (Energy: ${energy}/10, Focus: ${focus}/10, Mood: ${mood}/10)`;
+
     setAnalysis({ conversionRate, summary });
   };
 
@@ -45,6 +51,17 @@ function Core() {
         </header>
 
         <main className="core-main">
+          <div className="slider-section">
+            <label>🔋 Energy Level: {energy}/10</label>
+            <input type="range" min="1" max="10" value={energy} onChange={(e) => setEnergy(Number(e.target.value))} />
+
+            <label>🎯 Focus Level: {focus}/10</label>
+            <input type="range" min="1" max="10" value={focus} onChange={(e) => setFocus(Number(e.target.value))} />
+
+            <label>🙂 Mood: {mood}/10</label>
+            <input type="range" min="1" max="10" value={mood} onChange={(e) => setMood(Number(e.target.value))} />
+          </div>
+
           <div className="input-block">
             <label>📥 What did you CONSUME today?</label>
             <textarea
