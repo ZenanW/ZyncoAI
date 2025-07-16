@@ -6,6 +6,34 @@ type Analysis = {
   summary: string;
 };
 
+type JournalEntry = {
+  date: string;
+  input: string;
+  output: string;
+  energy: number;
+  focus: number;
+  mood: number;
+};
+
+const mockEntries: JournalEntry[] = [
+  {
+    date: '2025-07-14',
+    input: 'Watched a podcast about dopamine detox.',
+    output: 'Wrote a journal reflection on attention span.',
+    energy: 6,
+    focus: 7,
+    mood: 8,
+  },
+  {
+    date: '2025-07-15',
+    input: 'Read a few chapters of "The Master and Margarita".',
+    output: '',
+    energy: 5,
+    focus: 4,
+    mood: 6,
+  },
+];
+
 function Core() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
@@ -13,6 +41,8 @@ function Core() {
   const [focus, setFocus] = useState(5);
   const [mood, setMood] = useState(5);
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
+  const [entries] = useState<JournalEntry[]>(mockEntries);
+  const [selectedDate, setSelectedDate] = useState<string>(mockEntries[0].date);
 
   const handleSubmit = () => {
     const cleanInput = input.trim();
@@ -50,53 +80,81 @@ function Core() {
           </div>
         </header>
 
-        <main className="core-main">
-          <div className="slider-section">
-            <label>🔋 Energy Level: {energy}/10</label>
-            <input type="range" min="1" max="10" value={energy} onChange={(e) => setEnergy(Number(e.target.value))} />
-
-            <label>🎯 Focus Level: {focus}/10</label>
-            <input type="range" min="1" max="10" value={focus} onChange={(e) => setFocus(Number(e.target.value))} />
-
-            <label>🙂 Mood: {mood}/10</label>
-            <input type="range" min="1" max="10" value={mood} onChange={(e) => setMood(Number(e.target.value))} />
-          </div>
-
-          <div className="input-block">
-            <label>📥 What did you CONSUME today?</label>
-            <textarea
-              placeholder="e.g. Watched a video about deep work..."
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-          </div>
-
-          <div className="output-block">
-            <label>📤 What did you CREATE / APPLY / THINK?</label>
-            <textarea
-              placeholder="e.g. Wrote a blog about productivity..."
-              value={output}
-              onChange={(e) => setOutput(e.target.value)}
-            />
-          </div>
-
-          <button className="submit-btn" onClick={handleSubmit}>
-            ✨ Get Insight
-          </button>
-
-          {analysis && (
-            <div className="analysis-box">
-              <div className="conversion-bar">
+        <div className="core-body">
+          <div className="core-sidebar">
+            <h3>📅 Past Entries</h3>
+            <div className="entry-list">
+              {entries.map((entry) => (
                 <div
-                  className="conversion-fill"
-                  style={{ width: `${analysis.conversionRate}%` }}
-                ></div>
-              </div>
-              <p><strong>Conversion Rate:</strong> {analysis.conversionRate}%</p>
-              <p><strong>AI Insight:</strong> {analysis.summary}</p>
+                  key={entry.date}
+                  className={`entry-card ${selectedDate === entry.date ? 'selected' : ''}`}
+                  onClick={() => {
+                    setSelectedDate(entry.date);
+                    setInput(entry.input);
+                    setOutput(entry.output);
+                    setEnergy(entry.energy);
+                    setFocus(entry.focus);
+                    setMood(entry.mood);
+                    setAnalysis(null);
+                  }}
+                >
+                  <strong>{entry.date}</strong>
+                  <p className="entry-preview">
+                    {entry.input.slice(0, 50) || 'No input'}...
+                  </p>
+                </div>
+              ))}
             </div>
-          )}
-        </main>
+          </div>
+          
+          <main className="core-main">
+            <div className="slider-section">
+              <label>🔋 Energy Level: {energy}/10</label>
+              <input type="range" min="1" max="10" value={energy} onChange={(e) => setEnergy(Number(e.target.value))} />
+
+              <label>🎯 Focus Level: {focus}/10</label>
+              <input type="range" min="1" max="10" value={focus} onChange={(e) => setFocus(Number(e.target.value))} />
+
+              <label>🙂 Mood: {mood}/10</label>
+              <input type="range" min="1" max="10" value={mood} onChange={(e) => setMood(Number(e.target.value))} />
+            </div>
+
+            <div className="input-block">
+              <label>📥 What did you CONSUME today?</label>
+              <textarea
+                placeholder="e.g. Watched a video about deep work..."
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+            </div>
+
+            <div className="output-block">
+              <label>📤 What did you CREATE / APPLY / THINK?</label>
+              <textarea
+                placeholder="e.g. Wrote a blog about productivity..."
+                value={output}
+                onChange={(e) => setOutput(e.target.value)}
+              />
+            </div>
+
+            <button className="submit-btn" onClick={handleSubmit}>
+              ✨ Get Insight
+            </button>
+
+            {analysis && (
+              <div className="analysis-box">
+                <div className="conversion-bar">
+                  <div
+                    className="conversion-fill"
+                    style={{ width: `${analysis.conversionRate}%` }}
+                  ></div>
+                </div>
+                <p><strong>Conversion Rate:</strong> {analysis.conversionRate}%</p>
+                <p><strong>AI Insight:</strong> {analysis.summary}</p>
+              </div>
+            )}
+          </main>
+        </div>
       </div>
     </div>
   );
