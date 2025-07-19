@@ -20,6 +20,25 @@
   margin-bottom: 2rem;
 }
 
+.logout-button {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: 2px solid #c084fc;
+  color: #c084fc;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.logout-button:hover {
+  background: #c084fc;
+  color: #0e0c1f;
+}
+
 .logo {
   font-size: 2rem;
   font-weight: 700;
@@ -111,6 +130,7 @@ textarea:focus {
 .core-body {
   display: flex;
   width: 100%;
+  outline: 2px dashed #22c55e;
 }
 
 .core-sidebar {
@@ -123,6 +143,7 @@ textarea:focus {
   border-right: 1px solid #333;
   display: flex;
   flex-direction: column;
+  outline: 2px dashed #38bdf8;
 }
 
 .core-sidebar h3 {
@@ -164,4 +185,67 @@ textarea:focus {
 .core-main {
   flex-grow: 1;
   padding: 30px;
+  outline: 2px dashed #a855f7;
+}
+
+.core-body {
+  display: flex;
+  width: 100%;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.core-main {
+  flex-grow: 1;
+  padding: 30px;
+  max-width: 620px; /* Helps prevent stretching */
+}
+
+.core-right-panel {
+  width: 230px;
+  background: #1a1a2e;
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  flex-shrink: 0;
+  border-left: 1px solid #333;
+  outline: 2px dashed #f43f5e
+}
+
+.progress-goal-box h3 {
+  color: #c084fc;
+  margin-bottom: 0.5rem;
+}
+
+.goal-bar {
+  background: #2a2a48;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.goal-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c084fc, #9333ea);
+  transition: width 0.5s ease-in-out;
+}
+
+.goal-status {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+@media (max-width: 1000px) {
+  .core-body {
+    flex-direction: column;
+    align-items: center;
+  }
+  .core-right-panel {
+    width: 100%;
+    margin-top: 2rem;
+  }
+  .core-main {
+    max-width: 100%;
+  }
 }

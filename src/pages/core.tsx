@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Core.css';
 
 type Analysis = {
@@ -43,6 +44,7 @@ function Core() {
   const [analysis, setAnalysis] = useState<Analysis | null>(null);
   const [entries] = useState<JournalEntry[]>(mockEntries);
   const [selectedDate, setSelectedDate] = useState<string>(mockEntries[0].date);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
     const cleanInput = input.trim();
@@ -69,6 +71,13 @@ function Core() {
     setAnalysis({ conversionRate, summary });
   };
 
+  function handleLogout() {
+    // Replace with your logout logic
+    navigate('/');
+    console.log("Logging out...");
+    // Example: redirect or clear user session
+  }
+
   return (
     <div className="core-container">
       <div className="core-inner">
@@ -78,6 +87,7 @@ function Core() {
             <span className="date">{new Date().toDateString()}</span>
             <span className="streak">🔥 Streak: 3 days</span>
           </div>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </header>
 
         <div className="core-body">
@@ -154,7 +164,24 @@ function Core() {
               </div>
             )}
           </main>
-        </div>
+          <div className="core-right-panel">
+            <div className="progress-goal-box">
+              <h3>🎯 Weekly Goal</h3>
+              <p>Maintain a 5-day streak</p>
+              <div className="goal-bar">
+                <div className="goal-fill" style={{ width: '60%' }}></div>
+              </div>
+              <p className="goal-status">3 / 5 days completed</p>
+
+              <h3 style={{ marginTop: '2rem' }}>🏆 Rank Progress</h3>
+              <p>Thinker Level 2</p>
+              <div className="goal-bar">
+                <div className="goal-fill" style={{ width: '45%' }}></div>
+              </div>
+              <p className="goal-status">90 / 200 XP</p>
+            </div>
+          </div>
+        </div>  
       </div>
     </div>
   );
