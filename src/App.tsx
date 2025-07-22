@@ -1,5 +1,6 @@
 import './App.css';
 import Core from './pages/core';
+import Analytics from './pages/analytics';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import orangeCube from './assets/3d-image-orange.png';
 import pinkIcosahedron from './assets/3d-image-pink-ball.png';
@@ -41,6 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/core" element={<Core />} />
+        <Route path="/analytics" element={<Analytics />} />
       </Routes>
     </Router>
   );

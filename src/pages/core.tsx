@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Core.css';
 
@@ -87,7 +87,10 @@ function Core() {
             <span className="date">{new Date().toDateString()}</span>
             <span className="streak">🔥 Streak: 3 days</span>
           </div>
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
+          <div className='header-buttons'>
+            <button className="logout-button" onClick={handleLogout}>Logout</button>
+            <button className="analytics-button" onClick={() => navigate('/analytics')}>Analytics</button>
+          </div>
         </header>
 
         <div className="core-body">
